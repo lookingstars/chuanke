@@ -22,6 +22,7 @@
 
 
 #import "JZSpeechViewController.h"
+#import "JZCateViewController.h"
 
 @interface JZCourseViewController ()<UITableViewDataSource,UITableViewDelegate,ImageScrollViewDelegate,JZAlbumDelegate>
 {
@@ -33,7 +34,8 @@
     
     NSInteger _type;/**< segment */
     
-    NSMutableArray *_classCategoryArray;
+    NSMutableArray *_classCategoryArray;/**< 课程分类数组 */
+    NSMutableArray *_iCategoryListArray;
 }
 @end
 
@@ -67,6 +69,12 @@
     //读取plist文件
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"classCategory" ofType:@"plist"];
     _classCategoryArray = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
+    
+    //课程类型
+    NSString *iCategoryListPath = [[NSBundle mainBundle] pathForResource:@"iCategoryList" ofType:@"plist"];
+    _iCategoryListArray = [[NSMutableArray alloc] initWithContentsOfFile:iCategoryListPath];
+    
+    
 }
 
 -(void)setNav{
@@ -326,7 +334,9 @@
         jzCourseDVC.courseId = jzCourseM.CourseID;
         [self.navigationController pushViewController:jzCourseDVC animated:YES];
     }else{
-        
+        JZCateViewController *jzCateVC = [[JZCateViewController alloc] init];
+        jzCateVC.cateType = @"today";
+        [self.navigationController pushViewController:jzCateVC animated:YES];
     }
     
 }

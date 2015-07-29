@@ -134,6 +134,7 @@
 		E3D72A3B1B68AB55007AE405 /* course_class_nums_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D72A381B68AB55007AE405 /* course_class_nums_icon.png */; };
 		E3D72A3C1B68AB55007AE405 /* course_live_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D72A391B68AB55007AE405 /* course_live_icon.png */; };
 		E3D72A3D1B68AB55007AE405 /* course_studs_nums_green.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D72A3A1B68AB55007AE405 /* course_studs_nums_green.png */; };
+		E3D72A411B68B7A8007AE405 /* JZCateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D72A401B68B7A8007AE405 /* JZCateViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -317,6 +318,8 @@
 		E3D72A381B68AB55007AE405 /* course_class_nums_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_class_nums_icon.png; sourceTree = "<group>"; };
 		E3D72A391B68AB55007AE405 /* course_live_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_live_icon.png; sourceTree = "<group>"; };
 		E3D72A3A1B68AB55007AE405 /* course_studs_nums_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_studs_nums_green.png; sourceTree = "<group>"; };
+		E3D72A3F1B68B7A8007AE405 /* JZCateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZCateViewController.h; sourceTree = "<group>"; };
+		E3D72A401B68B7A8007AE405 /* JZCateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZCateViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -614,6 +617,7 @@
 		E32E9A061B5F9F6300B9E701 /* Course */ = {
 			isa = PBXGroup;
 			children = (
+				E3D72A3E1B68B737007AE405 /* CourseCate */,
 				E3D72A161B676C6F007AE405 /* School */,
 				E3D729F81B662FAB007AE405 /* VedioDetailViewController.h */,
 				E3D729F91B662FAB007AE405 /* VedioDetailViewController.m */,
@@ -840,6 +844,15 @@
 			path = School;
 			sourceTree = "<group>";
 		};
+		E3D72A3E1B68B737007AE405 /* CourseCate */ = {
+			isa = PBXGroup;
+			children = (
+				E3D72A3F1B68B7A8007AE405 /* JZCateViewController.h */,
+				E3D72A401B68B7A8007AE405 /* JZCateViewController.m */,
+			);
+			path = CourseCate;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1058,6 +1071,7 @@
 				E32E99C81B5F890100B9E701 /* main.m in Sources */,
 				E32E9A0B1B5FA03200B9E701 /* JZCourseViewController.m in Sources */,
 				E3D72A091B6721B6007AE405 /* JZCourseInfoViewController.m in Sources */,
+				E3D72A411B68B7A8007AE405 /* JZCateViewController.m in Sources */,
 				E32E9A151B608BAB00B9E701 /* JZFocusListModel.m in Sources */,
 				E3D72A1E1B678264007AE405 /* JZSchoolModel.m in Sources */,
 				E3D72A0C1B672252007AE405 /* NSString+Size.m in Sources */,
