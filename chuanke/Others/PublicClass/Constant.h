@@ -10,7 +10,7 @@
 #define chuanke_Constant_h
 
 
-#define UID @"5942916"
+#define UID @"4597633"
 #define VERSION @"2.4.1.2"
 
 #endif
