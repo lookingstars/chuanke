@@ -32,4 +32,11 @@ typedef void(^FailureBlock)(NSString *error);
 #pragma mark - 获取课程评价
 -(void)getClassEvalResult:(NSDictionary *)userInfo url:(NSString *)url successBlock:(SuccessBlock)successBlock failureBlock:(FailureBlock)failureBlock;
 
+
+#pragma mark - Get
+-(void)getDataResult:(NSDictionary *)userInfo url:(NSString *)url successBlock:(SuccessBlock)successBlock failureBlock:(FailureBlock)failureBlock;
+
+
+
+
 @end

@@ -121,6 +121,19 @@
 		E3D72A0F1B67278B007AE405 /* JZCourseEvaluationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D72A0E1B67278B007AE405 /* JZCourseEvaluationViewController.m */; };
 		E3D72A121B674C9A007AE405 /* JZEvalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D72A111B674C9A007AE405 /* JZEvalModel.m */; };
 		E3D72A151B6754A6007AE405 /* JZEvalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D72A141B6754A6007AE405 /* JZEvalCell.m */; };
+		E3D72A191B676C8F007AE405 /* JZSchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D72A181B676C8F007AE405 /* JZSchoolViewController.m */; };
+		E3D72A1E1B678264007AE405 /* JZSchoolModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D72A1D1B678264007AE405 /* JZSchoolModel.m */; };
+		E3D72A231B68782F007AE405 /* JZSchoolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D72A221B68782F007AE405 /* JZSchoolCell.m */; };
+		E3D72A281B687F30007AE405 /* bg_icon_to_launcher_pre.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D72A241B687F30007AE405 /* bg_icon_to_launcher_pre.png */; };
+		E3D72A291B687F30007AE405 /* bg_icon_to_launcher_unpre.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D72A251B687F30007AE405 /* bg_icon_to_launcher_unpre.png */; };
+		E3D72A2A1B687F30007AE405 /* bg_school_share_pre.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D72A261B687F30007AE405 /* bg_school_share_pre.png */; };
+		E3D72A2B1B687F30007AE405 /* bg_school_share_unpre.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D72A271B687F30007AE405 /* bg_school_share_unpre.png */; };
+		E3D72A2E1B68A072007AE405 /* JZAllCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D72A2D1B68A072007AE405 /* JZAllCourseViewController.m */; };
+		E3D72A311B68A3A9007AE405 /* JZAllCourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D72A301B68A3A9007AE405 /* JZAllCourseModel.m */; };
+		E3D72A371B68A9A5007AE405 /* JZAllCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D72A361B68A9A5007AE405 /* JZAllCourseCell.m */; };
+		E3D72A3B1B68AB55007AE405 /* course_class_nums_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D72A381B68AB55007AE405 /* course_class_nums_icon.png */; };
+		E3D72A3C1B68AB55007AE405 /* course_live_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D72A391B68AB55007AE405 /* course_live_icon.png */; };
+		E3D72A3D1B68AB55007AE405 /* course_studs_nums_green.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D72A3A1B68AB55007AE405 /* course_studs_nums_green.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -285,6 +298,25 @@
 		E3D72A111B674C9A007AE405 /* JZEvalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZEvalModel.m; sourceTree = "<group>"; };
 		E3D72A131B6754A6007AE405 /* JZEvalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZEvalCell.h; sourceTree = "<group>"; };
 		E3D72A141B6754A6007AE405 /* JZEvalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZEvalCell.m; sourceTree = "<group>"; };
+		E3D72A171B676C8F007AE405 /* JZSchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZSchoolViewController.h; sourceTree = "<group>"; };
+		E3D72A181B676C8F007AE405 /* JZSchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZSchoolViewController.m; sourceTree = "<group>"; };
+		E3D72A1C1B678264007AE405 /* JZSchoolModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZSchoolModel.h; sourceTree = "<group>"; };
+		E3D72A1D1B678264007AE405 /* JZSchoolModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZSchoolModel.m; sourceTree = "<group>"; };
+		E3D72A211B68782F007AE405 /* JZSchoolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZSchoolCell.h; sourceTree = "<group>"; };
+		E3D72A221B68782F007AE405 /* JZSchoolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZSchoolCell.m; sourceTree = "<group>"; };
+		E3D72A241B687F30007AE405 /* bg_icon_to_launcher_pre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_icon_to_launcher_pre.png; sourceTree = "<group>"; };
+		E3D72A251B687F30007AE405 /* bg_icon_to_launcher_unpre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_icon_to_launcher_unpre.png; sourceTree = "<group>"; };
+		E3D72A261B687F30007AE405 /* bg_school_share_pre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_school_share_pre.png; sourceTree = "<group>"; };
+		E3D72A271B687F30007AE405 /* bg_school_share_unpre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_school_share_unpre.png; sourceTree = "<group>"; };
+		E3D72A2C1B68A072007AE405 /* JZAllCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZAllCourseViewController.h; sourceTree = "<group>"; };
+		E3D72A2D1B68A072007AE405 /* JZAllCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZAllCourseViewController.m; sourceTree = "<group>"; };
+		E3D72A2F1B68A3A9007AE405 /* JZAllCourseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZAllCourseModel.h; sourceTree = "<group>"; };
+		E3D72A301B68A3A9007AE405 /* JZAllCourseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZAllCourseModel.m; sourceTree = "<group>"; };
+		E3D72A351B68A9A5007AE405 /* JZAllCourseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZAllCourseCell.h; sourceTree = "<group>"; };
+		E3D72A361B68A9A5007AE405 /* JZAllCourseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZAllCourseCell.m; sourceTree = "<group>"; };
+		E3D72A381B68AB55007AE405 /* course_class_nums_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_class_nums_icon.png; sourceTree = "<group>"; };
+		E3D72A391B68AB55007AE405 /* course_live_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_live_icon.png; sourceTree = "<group>"; };
+		E3D72A3A1B68AB55007AE405 /* course_studs_nums_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_studs_nums_green.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -582,6 +614,7 @@
 		E32E9A061B5F9F6300B9E701 /* Course */ = {
 			isa = PBXGroup;
 			children = (
+				E3D72A161B676C6F007AE405 /* School */,
 				E3D729F81B662FAB007AE405 /* VedioDetailViewController.h */,
 				E3D729F91B662FAB007AE405 /* VedioDetailViewController.m */,
 				E32E9A091B5FA03200B9E701 /* JZCourseViewController.h */,
@@ -662,6 +695,7 @@
 		E32E9A121B608B6C00B9E701 /* Course */ = {
 			isa = PBXGroup;
 			children = (
+				E3D72A1B1B678247007AE405 /* School */,
 				E3D729B41B65D5C2007AE405 /* CourseDetail */,
 				E32E9A131B608BAB00B9E701 /* JZFocusListModel.h */,
 				E32E9A141B608BAB00B9E701 /* JZFocusListModel.m */,
@@ -676,6 +710,7 @@
 		E32E9A1C1B60918F00B9E701 /* Course */ = {
 			isa = PBXGroup;
 			children = (
+				E3D72A1A1B67821E007AE405 /* School */,
 				E3D729BE1B66128E007AE405 /* CourseDetail */,
 				E30E6A6A1B6099AC00883F8A /* JZCourseCell.h */,
 				E30E6A6B1B6099AC00883F8A /* JZCourseCell.m */,
@@ -758,11 +793,51 @@
 		E3D729FE1B67180C007AE405 /* courseDetail */ = {
 			isa = PBXGroup;
 			children = (
+				E3D72A381B68AB55007AE405 /* course_class_nums_icon.png */,
+				E3D72A391B68AB55007AE405 /* course_live_icon.png */,
+				E3D72A3A1B68AB55007AE405 /* course_studs_nums_green.png */,
+				E3D72A241B687F30007AE405 /* bg_icon_to_launcher_pre.png */,
+				E3D72A251B687F30007AE405 /* bg_icon_to_launcher_unpre.png */,
+				E3D72A261B687F30007AE405 /* bg_school_share_pre.png */,
+				E3D72A271B687F30007AE405 /* bg_school_share_unpre.png */,
 				E3D72A051B671CE1007AE405 /* course_info_title_vote@2x.png */,
 				E3D729FF1B67180C007AE405 /* course_catalog_icon.png */,
 				E3D72A001B67180C007AE405 /* course_info_icon.png */,
 			);
 			path = courseDetail;
+			sourceTree = "<group>";
+		};
+		E3D72A161B676C6F007AE405 /* School */ = {
+			isa = PBXGroup;
+			children = (
+				E3D72A171B676C8F007AE405 /* JZSchoolViewController.h */,
+				E3D72A181B676C8F007AE405 /* JZSchoolViewController.m */,
+				E3D72A2C1B68A072007AE405 /* JZAllCourseViewController.h */,
+				E3D72A2D1B68A072007AE405 /* JZAllCourseViewController.m */,
+			);
+			path = School;
+			sourceTree = "<group>";
+		};
+		E3D72A1A1B67821E007AE405 /* School */ = {
+			isa = PBXGroup;
+			children = (
+				E3D72A351B68A9A5007AE405 /* JZAllCourseCell.h */,
+				E3D72A361B68A9A5007AE405 /* JZAllCourseCell.m */,
+				E3D72A211B68782F007AE405 /* JZSchoolCell.h */,
+				E3D72A221B68782F007AE405 /* JZSchoolCell.m */,
+			);
+			path = School;
+			sourceTree = "<group>";
+		};
+		E3D72A1B1B678247007AE405 /* School */ = {
+			isa = PBXGroup;
+			children = (
+				E3D72A1C1B678264007AE405 /* JZSchoolModel.h */,
+				E3D72A1D1B678264007AE405 /* JZSchoolModel.m */,
+				E3D72A2F1B68A3A9007AE405 /* JZAllCourseModel.h */,
+				E3D72A301B68A3A9007AE405 /* JZAllCourseModel.m */,
+			);
+			path = School;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -854,6 +929,7 @@
 				E3D729EC1B662F70007AE405 /* bg_rss_head.png in Resources */,
 				E30E6AA51B60E33600883F8A /* channel_icon_college_unpre.png in Resources */,
 				E30E6AB01B60E33600883F8A /* channel_icon_program_pre.png in Resources */,
+				E3D72A3C1B68AB55007AE405 /* course_live_icon.png in Resources */,
 				E32E9A021B5F9D2700B9E701 /* bottom_tab2_pre@2x.png in Resources */,
 				E3D729D51B662A4E007AE405 /* course_class_study_status_ing.png in Resources */,
 				E30E6AB21B60E33600883F8A /* channel_icon_school_pre.png in Resources */,
@@ -878,10 +954,13 @@
 				E30E6A6E1B609C8900883F8A /* defualt_course_icon.jpg in Resources */,
 				E3D72A021B67180C007AE405 /* course_catalog_icon.png in Resources */,
 				E30E6AA11B60E33600883F8A /* channel_icon_abroad_unpre.png in Resources */,
+				E3D72A3B1B68AB55007AE405 /* course_class_nums_icon.png in Resources */,
 				E3D729F31B662F70007AE405 /* zoomin@2x.png in Resources */,
 				E30E6AA71B60E33600883F8A /* channel_icon_design_unpre.png in Resources */,
 				E3D729D41B662A4E007AE405 /* course_class_study_status_end.png in Resources */,
+				E3D72A3D1B68AB55007AE405 /* course_studs_nums_green.png in Resources */,
 				E32E9A001B5F9D2700B9E701 /* bottom_tab1_pre@2x.png in Resources */,
+				E3D72A2B1B687F30007AE405 /* bg_school_share_unpre.png in Resources */,
 				E30E6A801B60D65A00883F8A /* icon_listheader_animation_1@2x.png in Resources */,
 				E3D729C41B661DDD007AE405 /* course_school_icon.png in Resources */,
 				E30E6AB11B60E33600883F8A /* channel_icon_program_unpre.png in Resources */,
@@ -892,6 +971,7 @@
 				E32E9A051B5F9D2700B9E701 /* bottom_tab3_unpre@2x.png in Resources */,
 				E30E6A851B60DA5F00883F8A /* InfoConfig.plist in Resources */,
 				E3D729EA1B662F70007AE405 /* account_cache_isplay@2x.png in Resources */,
+				E3D72A2A1B687F30007AE405 /* bg_school_share_pre.png in Resources */,
 				E30E6AAE1B60E33600883F8A /* channel_icon_live_pre.png in Resources */,
 				E30E6AB61B60E33600883F8A /* channel_icon_work_pre.png in Resources */,
 				E3D729F11B662F70007AE405 /* zoomin.png in Resources */,
@@ -908,7 +988,9 @@
 				E30E6A7C1B60BDF300883F8A /* course_info_bg_collected@2x.png in Resources */,
 				E3D729F51B662F70007AE405 /* zoomout1.png in Resources */,
 				E32E99D31B5F890100B9E701 /* Images.xcassets in Resources */,
+				E3D72A291B687F30007AE405 /* bg_icon_to_launcher_unpre.png in Resources */,
 				E30E6AAA1B60E33600883F8A /* channel_icon_foreign_pre.png in Resources */,
+				E3D72A281B687F30007AE405 /* bg_icon_to_launcher_pre.png in Resources */,
 				E30E6AA31B60E33600883F8A /* channel_icon_certificate_unpre.png in Resources */,
 				E3D729F71B662F70007AE405 /* zoomout@2x.png in Resources */,
 				E3D729EF1B662F70007AE405 /* point_normal.png in Resources */,
@@ -970,12 +1052,14 @@
 				E30E6A761B60B8DF00883F8A /* JZCourseDetailViewController.m in Sources */,
 				E3D729FA1B662FAB007AE405 /* VedioDetailViewController.m in Sources */,
 				E32E99CE1B5F890100B9E701 /* ViewController.m in Sources */,
+				E3D72A2E1B68A072007AE405 /* JZAllCourseViewController.m in Sources */,
 				E3D729BD1B660CF2007AE405 /* JZClassListModel.m in Sources */,
 				E32E99CB1B5F890100B9E701 /* AppDelegate.m in Sources */,
 				E32E99C81B5F890100B9E701 /* main.m in Sources */,
 				E32E9A0B1B5FA03200B9E701 /* JZCourseViewController.m in Sources */,
 				E3D72A091B6721B6007AE405 /* JZCourseInfoViewController.m in Sources */,
 				E32E9A151B608BAB00B9E701 /* JZFocusListModel.m in Sources */,
+				E3D72A1E1B678264007AE405 /* JZSchoolModel.m in Sources */,
 				E3D72A0C1B672252007AE405 /* NSString+Size.m in Sources */,
 				E3D729C11B6612B8007AE405 /* JZCourseDetailInfoCell.m in Sources */,
 				E3D729FD1B66394C007AE405 /* MineViewController.m in Sources */,
@@ -983,13 +1067,17 @@
 				E3D729E91B662F70007AE405 /* JZVideoPlayerView.m in Sources */,
 				E3D729CA1B662742007AE405 /* JZCourseClassCell.m in Sources */,
 				E30E6A731B60AF9200883F8A /* JZAlbumCell.m in Sources */,
+				E3D72A191B676C8F007AE405 /* JZSchoolViewController.m in Sources */,
 				E32E9A111B60892C00B9E701 /* NetworkSingleton.m in Sources */,
 				E3D729B71B65D62E007AE405 /* JZCourseDetailModel.m in Sources */,
 				E32E9A221B60924400B9E701 /* ImageScrollCell.m in Sources */,
+				E3D72A311B68A3A9007AE405 /* JZAllCourseModel.m in Sources */,
 				E3D72A151B6754A6007AE405 /* JZEvalCell.m in Sources */,
 				E3D72A0F1B67278B007AE405 /* JZCourseEvaluationViewController.m in Sources */,
 				E32E9A181B608BC800B9E701 /* JZCourseListModel.m in Sources */,
+				E3D72A231B68782F007AE405 /* JZSchoolCell.m in Sources */,
 				E30E6A6C1B6099AC00883F8A /* JZCourseCell.m in Sources */,
+				E3D72A371B68A9A5007AE405 /* JZAllCourseCell.m in Sources */,
 				E3D72A121B674C9A007AE405 /* JZEvalModel.m in Sources */,
 				E32E9A1B1B608BDC00B9E701 /* JZAlbumListModel.m in Sources */,
 				E30E6AD21B61DF6400883F8A /* JZSpeechViewController.m in Sources */,

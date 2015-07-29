@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1C1C9DC2-58C9-43F0-80A4-371814EBFE8B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>chuanke</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7604E3C987DF6B729A4A006AAB960165C00D8B61</key>
+		<string>https://github.com/lookingstars/chuanke.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>chuanke.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7604E3C987DF6B729A4A006AAB960165C00D8B61</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/lookingstars/chuanke.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7604E3C987DF6B729A4A006AAB960165C00D8B61</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7604E3C987DF6B729A4A006AAB960165C00D8B61</string>
+			<key>IDESourceControlWCCName</key>
+			<string>chuanke</string>
+		</dict>
+	</array>
+</dict>
+</plist>

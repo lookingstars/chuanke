@@ -19,8 +19,9 @@
 #import "VedioDetailViewController.h"
 #import "JZCourseInfoViewController.h"
 #import "JZCourseEvaluationViewController.h"
+#import "JZSchoolViewController.h"
 
-@interface JZCourseDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface JZCourseDetailViewController ()<UITableViewDataSource,UITableViewDelegate,JZCourseDetailInfoDelegate>
 {
     JZCourseDetailModel *_jzCourseDM;
     
@@ -275,6 +276,7 @@
             [cell setJzCourseDM:_jzCourseDM];
         }
         
+        cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else{
@@ -346,7 +348,12 @@
     }
 }
 
-
+#pragma mark - JZCourseDetailInfoDelegate
+-(void)didSelectedSchool{
+    JZSchoolViewController *jzSchoolVC = [[JZSchoolViewController alloc] init];
+    jzSchoolVC.SID = _jzCourseDM.SID;
+    [self.navigationController pushViewController:jzSchoolVC animated:YES];
+}
 
 
 /*

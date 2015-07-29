@@ -75,6 +75,11 @@
     _schoolNameLabel.font = [UIFont systemFontOfSize:13];
     _schoolNameLabel.layer.borderColor = [RGB(46, 158, 138) CGColor];
     [self addSubview:_schoolNameLabel];
+    _schoolNameLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(OnTapSchoolLabel)];
+    [_schoolNameLabel addGestureRecognizer:tap];
+    
+    
     //
     UIImageView *arrowImageview = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_schoolNameLabel.frame)-13, CGRectGetMinY(_schoolNameLabel.frame), 13, 25)];
     [arrowImageview setImage:[UIImage imageNamed:@"course_school_classify_icon"]];
@@ -100,7 +105,9 @@
     }
 }
 
-
+-(void)OnTapSchoolLabel{
+    [self.delegate didSelectedSchool];
+}
 
 
 

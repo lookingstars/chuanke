@@ -9,8 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "JZCourseDetailModel.h"
 
+@protocol JZCourseDetailInfoDelegate <NSObject>
+
+@optional
+-(void)didSelectedSchool;
+
+@end
+
 @interface JZCourseDetailInfoCell : UITableViewCell
 
 @property(nonatomic, strong) JZCourseDetailModel *jzCourseDM;/**< 数据 */
+
+@property(nonatomic, assign) id<JZCourseDetailInfoDelegate> delegate;
 
 @end
