@@ -74,7 +74,7 @@
         imageView.backgroundColor = [UIColor redColor];
 //        imageView.frame = CGRectMake(i*screen_width, 0, screen_width, self.frame.size.height);
         NSString *imageName =[NSString stringWithFormat:@"%@",imageArray[i]];
-        NSLog(@"%@",imageName);
+//        NSLog(@"%@",imageName);
         [imageView sd_setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:[UIImage imageNamed:@"lesson_default"]];
         
 //        [self.scrollView addSubview:imageView];

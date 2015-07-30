@@ -20,6 +20,10 @@
 #import "JZCourseInfoViewController.h"
 #import "JZCourseEvaluationViewController.h"
 #import "JZSchoolViewController.h"
+#import "SVProgressHUD.h"
+#import "UMSocial.h"
+#import "MJRefresh.h"
+
 
 @interface JZCourseDetailViewController ()<UITableViewDataSource,UITableViewDelegate,JZCourseDetailInfoDelegate>
 {
@@ -44,13 +48,13 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
+    NSLog(@"+++++++:%@",self.SID);
+    
+    
     [self initData];
     [self setNav];
     [self initTableview];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self getClassListData];
-    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,11 +94,49 @@
 }
 
 -(void)initTableview{
-    self.tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, screen_width, screen_height-64) style:UITableViewStylePlain];
-    self.tableview.dataSource = self;
-    self.tableview.delegate = self;
-    self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.view addSubview:self.tableview];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, screen_width, screen_height-64) style:UITableViewStylePlain];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:self.tableView];
+    
+    [self setupTableview];
+}
+
+-(void)setupTableview{
+    //添加下拉的动画图片
+    //设置下拉刷新回调
+    [self.tableView addGifHeaderWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    
+    //设置普通状态的动画图片
+    NSMutableArray *idleImages = [NSMutableArray array];
+    for (NSUInteger i = 1; i<=60; ++i) {
+        //        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"dropdown_anim__000%zd",i]];
+        //        [idleImages addObject:image];
+        UIImage *image = [UIImage imageNamed:@"icon_listheader_animation_1"];
+        [idleImages addObject:image];
+    }
+    [self.tableView.gifHeader setImages:idleImages forState:MJRefreshHeaderStateIdle];
+    
+    //设置即将刷新状态的动画图片
+    NSMutableArray *refreshingImages = [NSMutableArray array];
+    UIImage *image1 = [UIImage imageNamed:@"icon_listheader_animation_1"];
+    [refreshingImages addObject:image1];
+    UIImage *image2 = [UIImage imageNamed:@"icon_listheader_animation_2"];
+    [refreshingImages addObject:image2];
+    [self.tableView.gifHeader setImages:refreshingImages forState:MJRefreshHeaderStatePulling];
+    
+    //设置正在刷新是的动画图片
+    [self.tableView.gifHeader setImages:refreshingImages forState:MJRefreshHeaderStateRefreshing];
+    
+    //马上进入刷新状态
+    [self.tableView.gifHeader beginRefreshing];
+}
+
+-(void)loadNewData{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self getClassListData];
+    });
 }
 
 //
@@ -103,6 +145,7 @@
 }
 
 -(void)OnTapCollectBtn:(UIButton *)sender{
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAPPKEY shareText:@"在美国被禁的网站，请偷偷看" shareImage:[UIImage imageNamed:@"channel_icon_foreign_unpre"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToWechatTimeline,UMShareToWechatSession, nil] delegate:self];
     
 }
 
@@ -156,10 +199,11 @@
         }
         
         
-        [self.tableview reloadData];
-        
+        [self.tableView reloadData];
+        [self.tableView.header endRefreshing];
     } failureBlock:^(NSString *error){
         NSLog(@"获取课程列表失败：%@",error);
+        [self.tableView.header endRefreshing];
     }];
 }
 
@@ -338,7 +382,15 @@
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([_dataSourceArray[indexPath.row] isKindOfClass:[JZClassListModel class]]) {
+        
         JZClassListModel *jzClassM = _dataSourceArray[indexPath.row];
+        if (jzClassM.VideoUrl == nil) {
+            [SVProgressHUD showErrorWithStatus:@"当前课程视频暂时没有"];
+            
+            return;
+        }
+        
+        
         NSString *fileUrl = [jzClassM.VideoUrl[0] objectForKey:@"FileURL"];
         NSLog(@"fileUrl:%@",fileUrl);
      

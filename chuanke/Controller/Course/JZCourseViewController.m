@@ -24,6 +24,8 @@
 #import "JZSpeechViewController.h"
 #import "JZCateViewController.h"
 
+#import "SVProgressHUD.h"
+
 @interface JZCourseViewController ()<UITableViewDataSource,UITableViewDelegate,ImageScrollViewDelegate,JZAlbumDelegate>
 {
     NSMutableArray *_focusListArray;/**< 第一个轮播数据 */
@@ -205,6 +207,8 @@
         [self.tableView reloadData];
         [self.tableView.header endRefreshing];
     } failureBlock:^(NSString *error){
+        [SVProgressHUD showErrorWithStatus:error];
+        
         NSLog(@"请求推荐课程数据失败：%@",error);
         [self.tableView.header endRefreshing];
     }];
@@ -335,7 +339,16 @@
         [self.navigationController pushViewController:jzCourseDVC animated:YES];
     }else{
         JZCateViewController *jzCateVC = [[JZCateViewController alloc] init];
-        jzCateVC.cateType = @"today";
+        if (indexPath.row == 0) {
+            jzCateVC.cateType = @"zhibo";
+        }else{
+            NSDictionary *dic = _iCategoryListArray[indexPath.row-1];
+            jzCateVC.cateType = @"feizhibo";
+            jzCateVC.cateNameArray = [dic objectForKey:@"categoryName"];
+            jzCateVC.cateIDArray = [dic objectForKey:@"categoryID"];
+        }
+        
+        
         [self.navigationController pushViewController:jzCateVC animated:YES];
     }
     
@@ -351,13 +364,33 @@
     jzCourseDVC.SID = jzFocusM.SID;
     jzCourseDVC.courseId = jzFocusM.CourseID;
     [self.navigationController pushViewController:jzCourseDVC animated:YES];
+//    [self presentViewController:jzCourseDVC animated:YES completion:nil];
+    
 }
 
 #pragma mark - JZAlbumDelegate
 -(void)didSelectedAlbumAtIndex:(NSInteger)index{
     NSLog(@"album index:%ld",index);
-    JZSpeechViewController *jzSpeechVC = [[JZSpeechViewController alloc] init];
-    [self.navigationController pushViewController:jzSpeechVC animated:YES];    
+    if (index == 0) {
+        NSURL *url = [NSURL URLWithString:@"openchuankekkiphone:"];
+        BOOL isInstalled = [[UIApplication sharedApplication] openURL:url];
+        if (isInstalled) {
+            
+        }else{
+            //土豆    https://appsto.re/cn/c8oMx.i
+            //找教练  https://appsto.re/cn/kRb26.i
+            //百度传课 https://appsto.re/cn/78XAL.i
+            //                NSURL *url1 = [NSURL URLWithString:@"https://appsto.re/cn/c8oMx.i"];
+            //                NSURL *url1 = [NSURL URLWithString:@"https://appsto.re/cn/kRb26.i"];
+            NSURL *url1 = [NSURL URLWithString:@"https://appsto.re/cn/78XAL.i"];
+            [[UIApplication sharedApplication] openURL:url1];
+            NSLog(@"没安装");
+        }
+    }else{
+        JZSpeechViewController *jzSpeechVC = [[JZSpeechViewController alloc] init];
+        [self.navigationController pushViewController:jzSpeechVC animated:YES];
+    }
+    
 }
 
 /*

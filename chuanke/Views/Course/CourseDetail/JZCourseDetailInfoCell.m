@@ -51,7 +51,7 @@
     _courseNameLabel.textColor = [UIColor whiteColor];
     [self addSubview:_courseNameLabel];
     //价格
-    _priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(_imageView.frame)+10, 70, 30)];
+    _priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(_imageView.frame)+10, 80, 30)];
     _priceLabel.textColor = [UIColor whiteColor];
     _priceLabel.font = [UIFont systemFontOfSize:15];
     _priceLabel.text = @"￥免费";

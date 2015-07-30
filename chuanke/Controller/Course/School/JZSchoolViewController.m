@@ -15,6 +15,8 @@
 #import "JZSchoolCell.h"
 #import "JZAllCourseViewController.h"
 
+#import "UMSocial.h"
+
 @interface JZSchoolViewController ()<UITableViewDataSource,UITableViewDelegate,JZSchoolDelegate>
 {
     JZSchoolModel *_jzSchoolM;
@@ -342,6 +344,8 @@
         jzAllCourseVC.DO = @"prelectList";
         jzAllCourseVC.SID = self.SID;
         [self.navigationController pushViewController:jzAllCourseVC animated:YES];
+    }else if (index == 2){
+        [UMSocialSnsService presentSnsIconSheetView:self appKey:UMAPPKEY shareText:@"在美国被禁的网站，请偷偷看" shareImage:[UIImage imageNamed:@"channel_icon_foreign_unpre"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToWechatTimeline,UMShareToWechatSession, nil] delegate:self];
     }
 }
 

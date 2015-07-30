@@ -11,7 +11,7 @@
 
 @interface JZCourseDetailViewController : UIViewController
 
-@property (nonatomic, strong) UITableView *tableview;
+@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSString    *SID;/**< 接收传参 */
 @property (nonatomic, strong) NSString    *courseId;/**< 接收传参 */
 

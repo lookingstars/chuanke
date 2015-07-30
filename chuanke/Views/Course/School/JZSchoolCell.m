@@ -32,8 +32,8 @@
     if (self) {
         self.backgroundColor = RGB(246, 246, 246);
         //大图
-        _bigImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screen_width, 210)];
-        [_bigImageView setImage:[UIImage imageNamed:@"lesson_default"]];
+        _bigImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 210-screen_width, screen_width, screen_width)];
+        [_bigImageView setImage:[UIImage imageNamed:@"school_pic9.jpg"]];
         [self addSubview:_bigImageView];
         
         //小图
@@ -111,8 +111,8 @@
 //        [_backView3 addSubview:label3];
         
         UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn1.frame = CGRectMake(width/2-16, 5, 32, 46);
-        [btn1 setImage:[UIImage imageNamed:@"bg_school_share_unpre"] forState:UIControlStateNormal];
+        btn1.frame = CGRectMake(width/2-27, 0, 55, 55);
+        [btn1 setImage:[UIImage imageNamed:@"share"] forState:UIControlStateNormal];
         [btn1 addTarget:self action:@selector(OnTapBtn1) forControlEvents:UIControlEventTouchUpInside];
         [_backView3 addSubview:btn1];
         
@@ -131,8 +131,8 @@
         
         NSLog(@"width:%f",width);
         UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn2.frame = CGRectMake(0, 5, 70, 47);
-        [btn2 setImage:[UIImage imageNamed:@"bg_icon_to_launcher_unpre"] forState:UIControlStateNormal];
+        btn2.frame = CGRectMake(width/2-27, 0, 55, 55);
+        [btn2 setImage:[UIImage imageNamed:@"desktop"] forState:UIControlStateNormal];
         [btn2 addTarget:self action:@selector(OnTapBtn2) forControlEvents:UIControlEventTouchUpInside];
         [_backView4 addSubview:btn2];
     }

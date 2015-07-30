@@ -7,26 +7,62 @@
 //
 
 #import "JZCateViewController.h"
+#import "NetworkSingleton.h"
+#import "JZCateModel.h"
+#import "MJExtension.h"
+#import "JZAllCourseCell.h"
+#import "MJRefresh.h"
+#import "JZCourseDetailViewController.h"
 
-@interface JZCateViewController ()
+@interface JZCateViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSInteger _type;/**< segment */
+    
+    NSInteger _page;/**< 页数 */
+    NSInteger _limit;/**< 每页的个数 */
+    NSInteger _charge;/**< 1：免费；2：收费 */
+    
+    NSString *_cateid;/**< 课程分类ID */
+    
+    NSMutableArray *_dataSourceArray;
 }
 @end
 
 @implementation JZCateViewController
+
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.hidesBottomBarWhenPushed = YES;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
+    [self initData];
     [self setNav];
+    
+    [self initViews];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)initData{
+    _dataSourceArray = [[NSMutableArray alloc] init];
+    _page = 1;
+    _limit = 20;
+    _charge = 1;
+    if ([self.cateType isEqualToString:@"feizhibo"]) {
+        NSLog(@"%@  IDArray:%@",self.cateNameArray,self.cateIDArray);
+        _cateid = self.cateIDArray[0];
+    }
 }
 
 -(void)setNav{
@@ -63,15 +99,163 @@
 -(void)OnTapSegmentCtr:(UISegmentedControl *)seg{
     NSInteger index = seg.selectedSegmentIndex;
     if (index == 0) {
-        _type = 0;
+        _page = 1;
+        _charge = 1;
     }else{
-        _type = 1;
+        _page = 1;
+        _charge = 2;
     }
-//    [self.tableView reloadData];
+
+    [self.tableView.gifHeader beginRefreshing];
+}
+
+-(void)initViews{
+    if ([self.cateType isEqualToString:@"zhibo"]) {
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, screen_width, screen_height-64) style:UITableViewStylePlain];
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [self.view addSubview:self.tableView];
+    }else{
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64+35, screen_width, screen_height-64) style:UITableViewStylePlain];
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [self.view addSubview:self.tableView];
+    }
+    [self setupTableview];
+}
+
+
+-(void)setupTableview{
+    //添加下拉的动画图片
+    //设置下拉刷新回调
+    [self.tableView addGifHeaderWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    
+    //设置普通状态的动画图片
+    NSMutableArray *idleImages = [NSMutableArray array];
+    for (NSUInteger i = 1; i<=60; ++i) {
+        //        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"dropdown_anim__000%zd",i]];
+        //        [idleImages addObject:image];
+        UIImage *image = [UIImage imageNamed:@"icon_listheader_animation_1"];
+        [idleImages addObject:image];
+    }
+    [self.tableView.gifHeader setImages:idleImages forState:MJRefreshHeaderStateIdle];
+    
+    //设置即将刷新状态的动画图片
+    NSMutableArray *refreshingImages = [NSMutableArray array];
+    UIImage *image1 = [UIImage imageNamed:@"icon_listheader_animation_1"];
+    [refreshingImages addObject:image1];
+    UIImage *image2 = [UIImage imageNamed:@"icon_listheader_animation_2"];
+    [refreshingImages addObject:image2];
+    [self.tableView.gifHeader setImages:refreshingImages forState:MJRefreshHeaderStatePulling];
+    
+    //设置正在刷新是的动画图片
+    [self.tableView.gifHeader setImages:refreshingImages forState:MJRefreshHeaderStateRefreshing];
+    
+    //马上进入刷新状态
+    [self.tableView.gifHeader beginRefreshing];
+    
+    //上拉刷新
+    [self.tableView addGifFooterWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    
+    //隐藏状态文字
+    //    self.tableView.footer.stateHidden = YES;
+    //设置正在刷新的动画
+    self.tableView.gifFooter.refreshingImages = refreshingImages;
+}
+
+-(void)loadNewData{
+    _page = 1;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self getAllCourseData];
+    });
+}
+
+-(void)loadMoreData{
+    _page++;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self getAllCourseData];
+    });
+}
+
+
+//请求数据
+//非直播：http://pop.client.chuanke.com/?mod=search&act=mobile&from=iPhone&page=1&limit=20&cateid=72351176527446016&charge=1
+//直播：http://pop.client.chuanke.com/?mod=search&act=mobile&from=iPhone&page=1&limit=20&today=1&charge=1
+-(void)getAllCourseData{
+    NSString *urlStr = @"";
+    if ([self.cateType isEqualToString:@"zhibo"]) {
+        urlStr = [NSString stringWithFormat:@"http://pop.client.chuanke.com/?mod=search&act=mobile&from=iPhone&page=%ld&limit=%ld&today=1&charge=%ld",_page,_limit,_charge];
+    }else{
+        urlStr = [NSString stringWithFormat:@"http://pop.client.chuanke.com/?mod=search&act=mobile&from=iPhone&page=%ld&limit=%ld&cateid=%@&charge=%ld",_page,_limit,_cateid,_charge];
+    }
+    NSLog(@"urlStr:%@",urlStr);
+    [[NetworkSingleton sharedManager] getDataResult:nil url:urlStr successBlock:^(id responseBody){
+        NSLog(@"课程分类查询成功");
+        
+        if (_page == 1) {
+            [_dataSourceArray removeAllObjects];
+        }
+        
+        NSMutableArray *ClassListArray = [responseBody objectForKey:@"ClassList"];
+        for (int i = 0; i < ClassListArray.count; i++) {
+            JZCateModel *jzCateM = [JZCateModel objectWithKeyValues:ClassListArray[i]];
+            [_dataSourceArray addObject:jzCateM];
+        }
+        
+        
+        [self.tableView reloadData];
+        [self.tableView.header endRefreshing];
+        [self.tableView.footer endRefreshing];
+    } failureBlock:^(NSString *error){
+        NSLog(@"课程分类查询失败：%@",error);
+        [self.tableView.header endRefreshing];
+        [self.tableView.footer endRefreshing];
+    }];
 }
 
 
 
+#pragma mark - UITableViewDataSource
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _dataSourceArray.count;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 74;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellIndentifier = @"allcourseCell";
+    JZAllCourseCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+    if (cell == nil) {
+        cell = [[JZAllCourseCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
+        //下划线
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 73.5, screen_width, 0.5)];
+        lineView.backgroundColor = separaterColor;
+        [cell addSubview:lineView];
+    }
+    
+    JZCateModel *jzCateM = _dataSourceArray[indexPath.row];
+    [cell setJzCateM:jzCateM];
+    
+    
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+}
+
+
+
+
+
+#pragma mark - UITableViewDelegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    JZCateModel *jzCateM = _dataSourceArray[indexPath.row];
+    JZCourseDetailViewController *jzCourseDVC = [[JZCourseDetailViewController alloc] init];
+    jzCourseDVC.SID = jzCateM.SID;
+    jzCourseDVC.courseId = jzCateM.CourseID;
+    [self.navigationController pushViewController:jzCourseDVC animated:YES];
+}
 
 
 
