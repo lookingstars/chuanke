@@ -209,6 +209,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [_iFlySpeechSynthesizer stopSpeaking];
+    [_iFlySpeechRecognizer stopListening];
 }
 
 

@@ -11,6 +11,7 @@
 @implementation JZFocusListModel
 
 -(void)setSID:(NSString *)SID{
+    _SID = SID;
     _aaa = @"100";
     NSLog(@"====:%@",_aaa);
 }
