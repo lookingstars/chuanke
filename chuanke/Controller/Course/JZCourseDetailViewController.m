@@ -48,9 +48,6 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
-    NSLog(@"+++++++:%@",self.SID);
-    
-    
     [self initData];
     [self setNav];
     [self initTableview];

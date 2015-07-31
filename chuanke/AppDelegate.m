@@ -73,7 +73,7 @@
     
     //友盟初始化
     [UMSocialData setAppKey:UMAPPKEY];
-    [UMSocialWechatHandler setWXAppId:@"wx3b1ec5fee404cc3d" appSecret:@"e97199313f931035a765ee433e335dbb" url:@"http://www.fityun.cn/"];
+    [UMSocialWechatHandler setWXAppId:@"wx0e3e603965a187d4" appSecret:@"299d15c8b4d1fdb218fd49a0b8eaa4e2" url:@"http://www.fityun.cn/"];
     
     //友盟初始化，对未安装QQ，微信的平台进行隐藏
     //    [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline]];
