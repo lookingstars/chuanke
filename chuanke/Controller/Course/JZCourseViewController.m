@@ -83,6 +83,17 @@
     UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screen_width, 98)];
     backView.backgroundColor = navigationBarColor;
     [self.view addSubview:backView];
+    
+    //声明：原创所有，不要注释下面的UIButton
+    UIButton *nameBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    nameBtn.frame = CGRectMake(10, 20, 60, 40);
+    nameBtn.font = [UIFont systemFontOfSize:15];
+    [nameBtn setTitle:@"点击这" forState:UIControlStateNormal];
+    [nameBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [nameBtn addTarget:self action:@selector(OnNameBtn) forControlEvents:UIControlEventTouchUpInside];
+    [backView addSubview:nameBtn];
+    
+    
     //标题
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(screen_width/2-80, 20, 160, 30)];
     titleLabel.textColor = [UIColor whiteColor];
@@ -94,6 +105,7 @@
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     searchBtn.frame = CGRectMake(screen_width-10-40, 20, 40, 40);
     [searchBtn setImage:[UIImage imageNamed:@"search_btn_unpre_bg"] forState:UIControlStateNormal];
+    [searchBtn addTarget:self action:@selector(OnSearchBtn:) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:searchBtn];
     
     //
@@ -171,6 +183,16 @@
     [self.tableView reloadData];
 }
 
+-(void)OnNameBtn{
+    UIAlertView *alertVC = [[UIAlertView alloc] initWithTitle:@"关于作者" message:@"作者：ljz，QQ：863784757，高仿原创所有，转载请注明出处，不可用于商业用途及其他不合法用途。" delegate:self cancelButtonTitle:@"同意" otherButtonTitles:nil, nil];
+    [alertVC show];
+}
+
+//搜索
+-(void)OnSearchBtn:(UIButton *)sender{
+    JZSpeechViewController *jzSpeechVC = [[JZSpeechViewController alloc] init];
+    [self.navigationController pushViewController:jzSpeechVC animated:YES];
+}
 
 
 //请求推荐课程数据

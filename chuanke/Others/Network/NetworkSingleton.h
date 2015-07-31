@@ -37,6 +37,8 @@ typedef void(^FailureBlock)(NSString *error);
 -(void)getDataResult:(NSDictionary *)userInfo url:(NSString *)url successBlock:(SuccessBlock)successBlock failureBlock:(FailureBlock)failureBlock;
 
 
+#pragma mark - 获取搜索课程信息
+-(void)getSearchResult:(NSDictionary *)userInfo url:(NSString *)url successBlock:(SuccessBlock)successBlock failureBlock:(FailureBlock)failureBlock;
 
 
 @end

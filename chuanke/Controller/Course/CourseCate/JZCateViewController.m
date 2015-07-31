@@ -25,6 +25,9 @@
     NSString *_cateid;/**< 课程分类ID */
     
     NSMutableArray *_dataSourceArray;
+    
+    UIView *_lineView;
+    NSInteger _currentIndex;/**< 记录当前课程分类按钮的下标 */
 }
 @end
 
@@ -59,8 +62,9 @@
     _page = 1;
     _limit = 20;
     _charge = 1;
+    _currentIndex = 0;
     if ([self.cateType isEqualToString:@"feizhibo"]) {
-        NSLog(@"%@  IDArray:%@",self.cateNameArray,self.cateIDArray);
+//        NSLog(@"%@  IDArray:%@",self.cateNameArray,self.cateIDArray);
         _cateid = self.cateIDArray[0];
     }
 }
@@ -72,6 +76,9 @@
     //返回按钮
     UIButton *backBtn = [UIButton buttonWithType: UIButtonTypeCustom];
     backBtn.frame = CGRectMake(0, 20, 40, 40);
+//    backBtn.font = [UIFont systemFontOfSize:15];
+//    [backBtn setTitle:@"今日直播" forState:UIControlStateNormal];
+//    [backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [backBtn setImage:[UIImage imageNamed:@"file_tital_back_but"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(OnTapBackBtn:) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:backBtn];
@@ -109,6 +116,21 @@
     [self.tableView.gifHeader beginRefreshing];
 }
 
+-(void)OnTapNameBtn:(UIButton *)sender{
+    NSInteger index = sender.tag - 10;
+    if (index == _currentIndex) {
+        return;
+    }
+    _currentIndex = index;
+    _cateid = _cateIDArray[index];
+    _page = 1;
+    [UIView animateWithDuration:0.5 animations:^{
+        _lineView.center = CGPointMake(sender.center.x, 39);
+    }];
+    //刷新数据
+    [self.tableView.gifHeader beginRefreshing];
+}
+
 -(void)initViews{
     if ([self.cateType isEqualToString:@"zhibo"]) {
         self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, screen_width, screen_height-64) style:UITableViewStylePlain];
@@ -118,14 +140,41 @@
         [self.view addSubview:self.tableView];
     }else{
         //
+        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, screen_width, 40)];
+        scrollView.pagingEnabled = NO;
+        scrollView.alwaysBounceHorizontal = YES;
+        scrollView.showsHorizontalScrollIndicator = NO;
+        scrollView.showsVerticalScrollIndicator = NO;
+        scrollView.backgroundColor = RGB(246, 246, 246);
+        [self.view addSubview:scrollView];
         
+        float btnWidth = 60;
+        
+        for (int i = 0; i < self.cateNameArray.count; i++) {
+            UIButton *nameBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            nameBtn.frame = CGRectMake(btnWidth*i, 0, btnWidth, 40);
+            nameBtn.tag = 10+i;
+            nameBtn.font = [UIFont systemFontOfSize:13];
+            [nameBtn setTitle:self.cateNameArray[i] forState:UIControlStateNormal];
+            [nameBtn setTitleColor:navigationBarColor forState:UIControlStateSelected];
+            [nameBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [nameBtn addTarget:self action:@selector(OnTapNameBtn:) forControlEvents:UIControlEventTouchUpInside];
+            [scrollView addSubview:nameBtn];
+            if (i == 0) {
+//                nameBtn.selected = YES;
+                _lineView = [[UIView alloc] initWithFrame:CGRectMake(nameBtn.center.x-20, 38, 40, 2)];
+                _lineView.backgroundColor = navigationBarColor;
+                [scrollView addSubview:_lineView];
+            }
+        }
+        scrollView.contentSize = CGSizeMake(self.cateNameArray.count*btnWidth, 0);
         
         
         
         
         
         //
-        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64+35, screen_width, screen_height-64) style:UITableViewStylePlain];
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64+40, screen_width, screen_height-64-40) style:UITableViewStylePlain];
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

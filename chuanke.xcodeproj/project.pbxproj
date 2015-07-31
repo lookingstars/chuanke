@@ -61,6 +61,7 @@
 		E30E6AD91B61E02500883F8A /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30E6AD51B61E02500883F8A /* iflyMSC.framework */; };
 		E30E6ADA1B61E02500883F8A /* libSunFlower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E30E6AD81B61E02500883F8A /* libSunFlower.a */; };
 		E30E6AE71B61F9DC00883F8A /* ISRDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E30E6AE31B61F9DC00883F8A /* ISRDataHelper.m */; };
+		E310A5071B6B6009007A1F65 /* voice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E310A5061B6B6009007A1F65 /* voice@2x.png */; };
 		E32E99C81B5F890100B9E701 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E32E99C71B5F890100B9E701 /* main.m */; };
 		E32E99CB1B5F890100B9E701 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E32E99CA1B5F890100B9E701 /* AppDelegate.m */; };
 		E32E99CE1B5F890100B9E701 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E32E99CD1B5F890100B9E701 /* ViewController.m */; };
@@ -244,6 +245,7 @@
 		E30E6AD81B61E02500883F8A /* libSunFlower.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSunFlower.a; sourceTree = "<group>"; };
 		E30E6AE21B61F9DC00883F8A /* ISRDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISRDataHelper.h; sourceTree = "<group>"; };
 		E30E6AE31B61F9DC00883F8A /* ISRDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISRDataHelper.m; sourceTree = "<group>"; };
+		E310A5061B6B6009007A1F65 /* voice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voice@2x.png"; sourceTree = "<group>"; };
 		E32E99C21B5F890100B9E701 /* chuanke.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chuanke.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E32E99C61B5F890100B9E701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E32E99C71B5F890100B9E701 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -756,6 +758,7 @@
 			children = (
 				E3D729FE1B67180C007AE405 /* courseDetail */,
 				E3D729D11B662A4E007AE405 /* course_class_study_status_end.png */,
+				E310A5061B6B6009007A1F65 /* voice@2x.png */,
 				E3D729D21B662A4E007AE405 /* course_class_study_status_ing.png */,
 				E3D729D31B662A4E007AE405 /* course_class_study_status_not.png */,
 				E3D729CB1B6628F1007AE405 /* test_status_end.png */,
@@ -1167,6 +1170,7 @@
 				E3D72A581B69F58A007AE405 /* school_pic2@2x.jpg in Resources */,
 				E3D729CE1B6628F1007AE405 /* test_status_end.png in Resources */,
 				E32E9A011B5F9D2700B9E701 /* bottom_tab1_unpre@2x.png in Resources */,
+				E310A5071B6B6009007A1F65 /* voice@2x.png in Resources */,
 				E30E6AB41B60E33600883F8A /* channel_icon_servant_pre.png in Resources */,
 				E3D729F01B662F70007AE405 /* point_selected.png in Resources */,
 				E30E6AA81B60E33600883F8A /* channel_icon_entertainment_pre.png in Resources */,
