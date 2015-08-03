@@ -14,4 +14,9 @@
 @property(nonatomic, strong) UITabBarController *rootTabbarCtr;
 
 @end
-
+/**
+ *  作者：ljz
+ *  QQ：  863784757
+ *  github：https://github.com/lookingstars/chuanke
+ *  申明：转载请注明出处，不可用于其他商业用途，不可用于不合法用途。
+ */
