@@ -11,6 +11,7 @@
 #import "JZCateModel.h"
 #import "JZAllCourseCell.h"
 #import "MJExtension.h"
+#import "JZCourseDetailViewController.h"
 
 
 //包含头文件
@@ -26,7 +27,7 @@
 #import "ISRDataHelper.h"
 
 
-@interface JZSpeechViewController ()<IFlySpeechSynthesizerDelegate,IFlySpeechRecognizerDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface JZSpeechViewController ()<IFlySpeechSynthesizerDelegate,IFlySpeechRecognizerDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 {
     IFlySpeechSynthesizer * _iFlySpeechSynthesizer;
     //不带界面的识别对象
@@ -52,8 +53,8 @@
     [self initViews];
     
     [self initTableView];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(HideKeyboard)];
-    [self.view addGestureRecognizer:tap];
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(HideKeyboard)];
+//    [self.view addGestureRecognizer:tap];
     
     
 }
@@ -74,6 +75,7 @@
 -(void)initViews{
     //搜索框
     self.textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 64+10, screen_width-60, 30)];
+    self.textField.delegate = self;
     self.textField.clearButtonMode = UITextFieldViewModeAlways;
     self.textField.placeholder = @"请 “尝试语音输入课程“";
     self.textField.text = @"";
@@ -149,7 +151,7 @@
 }
 
 -(void)initTableView{
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64+40, screen_width, screen_height-64-40) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64+40, screen_width, screen_height-64-40-49) style:UITableViewStylePlain];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -190,6 +192,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)OnTapCollectBtn:(UIButton *)sender{
+    [self.view endEditing:YES];
     if ([self.textField.text isEqualToString:@""]) {
         UIAlertView *alertV = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入内容再搜索" delegate:self cancelButtonTitle:@"好" otherButtonTitles:nil, nil];
         [alertV show];
@@ -425,14 +428,27 @@
     
     return cell;
 }
-
-
+#pragma mark - UITableViewDelegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.view endEditing:YES];
+    JZCateModel *jzCateM = _dataSourceArray[indexPath.row];
+    JZCourseDetailViewController *jzCourseDVC = [[JZCourseDetailViewController alloc] init];
+    jzCourseDVC.SID = jzCateM.SID;
+    jzCourseDVC.courseId = jzCateM.CourseID;
+    [self.navigationController pushViewController:jzCourseDVC animated:YES];
+}
 
 -(void)viewWillDisappear:(BOOL)animated{
     [_iFlySpeechSynthesizer stopSpeaking];
     [_iFlySpeechRecognizer stopListening];
 }
 
+
+#pragma mark - UITextFieldDelegate
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
 
 
 /*
