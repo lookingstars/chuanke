@@ -13,6 +13,9 @@
 @property (strong, nonatomic) UIWindow *window;
 @property(nonatomic, strong) UITabBarController *rootTabbarCtr;
 
+@property(nonatomic, assign) BOOL isFullScreen;
+
+
 @end
 /**
  *  作者：ljz

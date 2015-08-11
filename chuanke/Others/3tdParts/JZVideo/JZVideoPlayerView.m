@@ -225,9 +225,11 @@
     UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
     if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
         NSLog(@"横屏");
+        self.isFullScreen = YES;
         [self initLandscape];
     }else{
         NSLog(@"竖屏");
+        self.isFullScreen = NO;
         [self initPortraint];
     }
 }

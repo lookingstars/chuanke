@@ -9,6 +9,7 @@
 #import "VedioDetailViewController.h"
 #import "JZVideoPlayerView.h"
 
+#import "AppDelegate.h"
 
 @interface VedioDetailViewController ()<JZPlayerViewDelegate>
 {
@@ -36,9 +37,15 @@
 //        [self initPlayer];
         [self initJZPlayer];
     });
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate.isFullScreen = YES;
 }
 
-
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate.isFullScreen = NO;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

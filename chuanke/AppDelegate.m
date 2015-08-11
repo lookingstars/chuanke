@@ -130,6 +130,16 @@
     return NO;
 }
 
+//禁止横屏
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    if (_isFullScreen) {
+        return UIInterfaceOrientationMaskAll;
+        return UIInterfaceOrientationLandscapeRight | UIInterfaceOrientationMaskPortrait;
+    }
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 @end
 /**
  *  作者：ljz
