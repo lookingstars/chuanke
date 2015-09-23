@@ -83,6 +83,7 @@
 		E32E9A1B1B608BDC00B9E701 /* JZAlbumListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E32E9A1A1B608BDC00B9E701 /* JZAlbumListModel.m */; };
 		E32E9A221B60924400B9E701 /* ImageScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E32E9A1F1B60924400B9E701 /* ImageScrollCell.m */; };
 		E32E9A231B60924400B9E701 /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E32E9A211B60924400B9E701 /* ImageScrollView.m */; };
+		E3B7F0891BB26B15001F4E16 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3B7F0861BB26B15001F4E16 /* libMobClickLibrary.a */; };
 		E3D729B71B65D62E007AE405 /* JZCourseDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D729B61B65D62E007AE405 /* JZCourseDetailModel.m */; };
 		E3D729BA1B660776007AE405 /* JZStepListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D729B91B660776007AE405 /* JZStepListModel.m */; };
 		E3D729BD1B660CF2007AE405 /* JZClassListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D729BC1B660CF2007AE405 /* JZClassListModel.m */; };
@@ -283,6 +284,9 @@
 		E32E9A1F1B60924400B9E701 /* ImageScrollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScrollCell.m; sourceTree = "<group>"; };
 		E32E9A201B60924400B9E701 /* ImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScrollView.h; sourceTree = "<group>"; };
 		E32E9A211B60924400B9E701 /* ImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScrollView.m; sourceTree = "<group>"; };
+		E3B7F0861BB26B15001F4E16 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		E3B7F0871BB26B15001F4E16 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		E3B7F0881BB26B15001F4E16 /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
 		E3D729B51B65D62E007AE405 /* JZCourseDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZCourseDetailModel.h; sourceTree = "<group>"; };
 		E3D729B61B65D62E007AE405 /* JZCourseDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZCourseDetailModel.m; sourceTree = "<group>"; };
 		E3D729B81B660776007AE405 /* JZStepListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZStepListModel.h; sourceTree = "<group>"; };
@@ -423,6 +427,7 @@
 				E30E6ACD1B61DC7700883F8A /* QuartzCore.framework in Frameworks */,
 				E30E6ACB1B61DC6D00883F8A /* AddressBook.framework in Frameworks */,
 				E30E6AC91B61DC6400883F8A /* CoreLocation.framework in Frameworks */,
+				E3B7F0891BB26B15001F4E16 /* libMobClickLibrary.a in Frameworks */,
 				E30E6AC71B61DC5800883F8A /* UIKit.framework in Frameworks */,
 				E30E6AC51B61DC4E00883F8A /* AudioToolbox.framework in Frameworks */,
 				E30E6AD91B61E02500883F8A /* iflyMSC.framework in Frameworks */,
@@ -659,6 +664,7 @@
 		E32E99F21B5F946900B9E701 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				E3B7F0851BB26B15001F4E16 /* UMAnalytics_Sdk_3.5.16 */,
 				E3D72A601B69F720007AE405 /* UMSocial_Sdk_4.2.3 */,
 				E3D72A7B1B69F720007AE405 /* UMSocial_Sdk_Extra_Frameworks */,
 			);
@@ -837,6 +843,16 @@
 				E32E9A211B60924400B9E701 /* ImageScrollView.m */,
 			);
 			path = LoopView;
+			sourceTree = "<group>";
+		};
+		E3B7F0851BB26B15001F4E16 /* UMAnalytics_Sdk_3.5.16 */ = {
+			isa = PBXGroup;
+			children = (
+				E3B7F0861BB26B15001F4E16 /* libMobClickLibrary.a */,
+				E3B7F0871BB26B15001F4E16 /* MobClick.h */,
+				E3B7F0881BB26B15001F4E16 /* MobClickSocialAnalytics.h */,
+			);
+			path = UMAnalytics_Sdk_3.5.16;
 			sourceTree = "<group>";
 		};
 		E3D729B41B65D5C2007AE405 /* CourseDetail */ = {
@@ -1481,6 +1497,7 @@
 					"$(PROJECT_DIR)/chuanke/Others/Library/UMSocial_Sdk_4.2.3",
 					"$(PROJECT_DIR)/chuanke/Others/Library/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/chuanke/Others/Library/UMSocial_Sdk_Extra_Frameworks/Wechat",
+					"$(PROJECT_DIR)/chuanke/Others/Library/UMAnalytics_Sdk_3.5.16",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
@@ -1511,6 +1528,7 @@
 					"$(PROJECT_DIR)/chuanke/Others/Library/UMSocial_Sdk_4.2.3",
 					"$(PROJECT_DIR)/chuanke/Others/Library/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/chuanke/Others/Library/UMSocial_Sdk_Extra_Frameworks/Wechat",
+					"$(PROJECT_DIR)/chuanke/Others/Library/UMAnalytics_Sdk_3.5.16",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";

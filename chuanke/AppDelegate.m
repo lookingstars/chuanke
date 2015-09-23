@@ -13,6 +13,7 @@
 
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
+#import "MobClick.h"
 
 @interface AppDelegate ()
 
@@ -69,7 +70,8 @@
     });
     
     
-    
+    //友盟统计
+    [MobClick startWithAppkey:UMAPPKEY reportPolicy:BATCH   channelId:@"GitHub"];
     
     //友盟初始化
     [UMSocialData setAppKey:UMAPPKEY];
