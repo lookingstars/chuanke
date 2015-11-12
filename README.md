@@ -3,7 +3,7 @@
 
 运行环境：xcode6.3  ios8.3  
 
-视频链接被百度后台服务器处理了，视频链接无效。
+# 视频链接被百度后台服务器处理了，视频链接无效。
 
 
 注：采用cocoapods管理第三方库，请双击meituan.xcworkspace启动工程。不要双击meituan.xcodeproj启动，否则会提示“library not found for -lPods-AFNetworking”
