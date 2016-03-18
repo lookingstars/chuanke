@@ -89,13 +89,14 @@
 }
 
 -(void)getSchoolData{
+    __weak typeof(self) weakself = self;
     NSString *urlStr = [NSString stringWithFormat:@"http://pop.client.chuanke.com/?mod=school&act=info&mode=&sid=%@&uid=%@",self.SID,UID];
     [[NetworkSingleton sharedManager] getDataResult:nil url:urlStr successBlock:^(id responseBody){
         NSLog(@"请求学校数据成功");
         
         _jzSchoolM = [JZSchoolModel objectWithKeyValues:responseBody];
         
-        [self.tableView reloadData];
+        [weakself.tableView reloadData];
     } failureBlock:^(NSString *error){
         NSLog(@"请求学校数据失败：%@",error);
     }];

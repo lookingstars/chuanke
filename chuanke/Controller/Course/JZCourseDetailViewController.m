@@ -173,6 +173,7 @@
 -(void)getClassListData{
     NSString *urlStr = [NSString stringWithFormat:@"http://pop.client.chuanke.com/?mod=course&act=info&do=getClassList&sid=%@&courseid=%@&version=%@&uid=%@",self.SID,self.courseId,VERSION,UID];
     NSLog(@"urlStr:%@",urlStr);
+    __weak typeof(self) weakself = self;
     [[NetworkSingleton sharedManager] getClassListResult:nil url:urlStr successBlock:^(id responseBody){
         NSLog(@"获取课程列表成功");
         //这个版本的MJExtension里没有setupObjectClassInArray
@@ -196,11 +197,11 @@
         }
         
         
-        [self.tableView reloadData];
-        [self.tableView.header endRefreshing];
+        [weakself.tableView reloadData];
+        [weakself.tableView.header endRefreshing];
     } failureBlock:^(NSString *error){
         NSLog(@"获取课程列表失败：%@",error);
-        [self.tableView.header endRefreshing];
+        [weakself.tableView.header endRefreshing];
     }];
 }
 
@@ -392,7 +393,8 @@
         NSLog(@"fileUrl:%@",fileUrl);
      
         VedioDetailViewController *vedioVC = [[VedioDetailViewController alloc] init];
-        vedioVC.FileUrl = fileUrl;
+//        vedioVC.FileUrl = fileUrl;
+        vedioVC.FileUrl = @"http://ws.v.chuanke.com/vedio/9/39/04/93904a21f0e5f881868b5a45597240e7.enc.flv";
         [self.navigationController pushViewController:vedioVC animated:YES];
     }
 }

@@ -197,6 +197,7 @@
 
 //请求推荐课程数据
 -(void)getRecommendData{
+    __weak typeof(self) weakself = self;
     NSString *urlStr = @"http://pop.client.chuanke.com/?mod=recommend&act=mobile&client=2&limit=20";
     [[NetworkSingleton sharedManager] getRecommendCourseResult:nil url:urlStr successBlock:^(id responseBody){
         NSLog(@"请求推荐课程数据成功");
@@ -225,14 +226,14 @@
             [_albumImgurlArray addObject:jzAlbumM.PhotoURL];
         }
         
-        self.tableView.hidden = NO;
-        [self.tableView reloadData];
-        [self.tableView.header endRefreshing];
+        weakself.tableView.hidden = NO;
+        [weakself.tableView reloadData];
+        [weakself.tableView.header endRefreshing];
     } failureBlock:^(NSString *error){
         [SVProgressHUD showErrorWithStatus:error];
         
         NSLog(@"请求推荐课程数据失败：%@",error);
-        [self.tableView.header endRefreshing];
+        [weakself.tableView.header endRefreshing];
     }];
     
 }

@@ -91,6 +91,7 @@
 }
 
 -(void)getAllCourseData{
+    __weak typeof(self) weakself = self;
     NSString *urlStr = [NSString stringWithFormat:@"http://pop.client.chuanke.com/?mod=school&act=info&do=%@&sid=%@&uid=%@",self.DO,self.SID,UID];
     [[NetworkSingleton sharedManager] getDataResult:nil url:urlStr successBlock:^(id responseBody){
         NSLog(@"请求所有课程成功");
@@ -100,7 +101,7 @@
             [_dataSourceArray addObject:jzAllCourseM];
         }
         
-        [self.tableView reloadData];
+        [weakself.tableView reloadData];
         
     } failureBlock:^(NSString *error){
         NSLog(@"请求所有课程失败：%@",error);        

@@ -166,6 +166,7 @@
 
 //搜索数据
 -(void)getSearchData{
+    __weak typeof(self) weakself = self;
     NSString *urlStr = [NSString stringWithFormat:@"http://pop.client.chuanke.com/?mod=search&act=mobile&page=1&limit=20&keyword=%@&cVersion=2.4.1.2&from=iPhone",self.textField.text];
     [[NetworkSingleton sharedManager] getSearchResult:nil url:urlStr successBlock:^(id responseBody){
         NSLog(@"搜索查询成功");
@@ -178,7 +179,7 @@
         }
         
         
-        [self.tableView reloadData];
+        [weakself.tableView reloadData];
         
         
     } failureBlock:^(NSString *error){

@@ -103,6 +103,7 @@
 -(void)getEvalData{
     NSString *urlStr = [NSString stringWithFormat:@"http://pop.client.chuanke.com/?mod=course&act=vote&do=list&uid=%@&courseid=%@&sid=%@&limit=%d&page=%d",UID,self.courseID,self.SID,_pageLimit,_page];
     NSLog(@"urlStr:%@",urlStr);
+    __weak typeof(self) weakself = self;
     [[NetworkSingleton sharedManager] getClassEvalResult:nil url:urlStr successBlock:^(id responseBody){
         NSLog(@"评价查询成功");
         NSMutableArray *DataListArray = [responseBody objectForKey:@"DataList"];
@@ -117,7 +118,7 @@
         }
         
         
-        [self.tableView reloadData];
+        [weakself.tableView reloadData];
         
     } failureBlock:^(NSString *error){
         NSLog(@"评价查询失败：%@",error);

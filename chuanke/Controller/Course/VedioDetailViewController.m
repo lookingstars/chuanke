@@ -85,11 +85,12 @@
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     NSLog(@"11111111");
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    __weak typeof(self) weakself = self;
     [UIView animateWithDuration:0 animations:^{
         if (UIDeviceOrientationIsLandscape(toInterfaceOrientation)) {
-            _jzPlayer.frame = CGRectMake(0, 0, self.view.frame.size.height, self.view.frame.size.width);
+            _jzPlayer.frame = CGRectMake(0, 0, weakself.view.frame.size.height, weakself.view.frame.size.width);
         }else{
-            _jzPlayer.frame = CGRectMake(0, 0, self.view.frame.size.height, 300);
+            _jzPlayer.frame = CGRectMake(0, 0, weakself.view.frame.size.height, 300);
         }
     } completion:^(BOOL finished){
         

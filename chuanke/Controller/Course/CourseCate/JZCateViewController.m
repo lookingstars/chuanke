@@ -248,6 +248,7 @@
         urlStr = [NSString stringWithFormat:@"http://pop.client.chuanke.com/?mod=search&act=mobile&from=iPhone&page=%ld&limit=%ld&cateid=%@&charge=%ld",_page,_limit,_cateid,_charge];
     }
     NSLog(@"urlStr:%@",urlStr);
+    __weak typeof(self) weakself = self;
     [[NetworkSingleton sharedManager] getDataResult:nil url:urlStr successBlock:^(id responseBody){
         NSLog(@"课程分类查询成功");
         
@@ -262,13 +263,13 @@
         }
         
         
-        [self.tableView reloadData];
-        [self.tableView.header endRefreshing];
-        [self.tableView.footer endRefreshing];
+        [weakself.tableView reloadData];
+        [weakself.tableView.header endRefreshing];
+        [weakself.tableView.footer endRefreshing];
     } failureBlock:^(NSString *error){
         NSLog(@"课程分类查询失败：%@",error);
-        [self.tableView.header endRefreshing];
-        [self.tableView.footer endRefreshing];
+        [weakself.tableView.header endRefreshing];
+        [weakself.tableView.footer endRefreshing];
     }];
 }
 
